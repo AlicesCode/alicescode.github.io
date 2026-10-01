@@ -1,11 +1,14 @@
 body{
+  position: relative; 
   padding: 0 0 0 0; 
+  margins: 
   background: #f5e0ff; 
   overflow-x: hidden; 
   overflow-y: hidden; 
 }
 
 header{
+  position: relative; 
   width: 100%; 
   height: 10vh; 
   padding: 0 0 0 0; 
@@ -51,4 +54,8 @@ a.headerButtons:hover{
   /* WIP */
   background-color: #e0a4fc; 
   color: #ffffff;
+}
+
+headerLeft{
+  margin-right:auto; 
 }
