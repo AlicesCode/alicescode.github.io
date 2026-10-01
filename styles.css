@@ -60,38 +60,3 @@ a.navHome{
   margin: auto 9%; 
   padding: 3%; 
 }
-
-/*
-a:focus{
-  outline: 2px solid #ff9800; 
-  background-color: #fff3e0; 
-}
-
-a.headerHome{
-  font-size: 0.5em; 
-  color: #81499c; 
-  padding: 1% 2% 1% 2%;
-}
-
-a.headerHome:hover{
-  background-color: #e0a4fc; 
-  color: #ffffff; 
-}
-
-a.headerButtons{
-  font-size: 0.5em; 
-  display: inline flow-root;
-  background-color: #ffffff; 
-  color: #81499c; 
-  padding: 1% 2% 1% 2%; 
-}
-
-a.headerButtons:hover{
-  background-color: #e0a4fc; 
-  color: #ffffff;
-}
-
-headerLeft{
-  margin-right:auto; 
-}
-*/
