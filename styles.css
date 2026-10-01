@@ -1,1 +1,40 @@
+body{
+  overflow-x: hidden; 
+  overflow-y: hidden; 
+  background: #efccff; 
+}
 
+header{
+  width: 100%; 
+  height: 10vh; 
+  padding: 0 10%; 
+  background: #e0a4fc; 
+}
+
+a{
+  font-family: Arial, sans-serif; 
+  font-weight: bold; 
+  transition: all 0.3s ease; 
+  text-decoration: none; /* Removes default underline */
+}
+
+a:focus{
+  outline: 2px solid #ff9800; 
+  background-color: #fff3e0; 
+}
+
+a.headerHome{
+  /* WIP */
+}
+
+a.headerHome:hover{
+  /* WIP */
+}
+
+a.headerButtons{
+  /* WIP */
+}
+
+a.headerButtons:hover{
+  /* WIP */
+}
