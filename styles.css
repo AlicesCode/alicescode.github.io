@@ -1,7 +1,8 @@
 body{
+  padding: 0 0; 
+  background: #f5e0ff; 
   overflow-x: hidden; 
   overflow-y: hidden; 
-  background: #f5e0ff; 
 }
 
 header{
