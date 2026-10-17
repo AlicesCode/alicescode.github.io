@@ -2,3 +2,7 @@ canvas{
     display: block; 
     margin: 3% auto;
 }
+
+canvas:focus{
+    outline: none; 
+}

@@ -13,22 +13,76 @@ async function start(clicked) {
     setTimeout(() => {
         ctx.fillStyle = "#000000"; 
         ctx.fillRect(width/2 - (4*scale), height/2, scale*(1.75), scale*2); 
-        clicked.clear = setInterval(() => {
+        clicked.startClear = setInterval(() => {
             ctx.fillStyle = "#000000"; 
             ctx.fillRect(width/2 - (4*scale), height/2, scale*(1.75), scale*2); 
         }, 2000); 
     }, 1000); 
-    clicked.add = setInterval(() => {
-            ctx.fillStyle = "#32CD32"; 
-            ctx.font = "30px Arial";
-            ctx.fillText(">          ", width/2, height/2 + (2*scale)); 
+    clicked.startAdd = setInterval(() => {
+        ctx.fillStyle = "#32CD32"; 
+        ctx.font = "30px Arial";
+        ctx.fillText(">          ", width/2, height/2 + (2*scale)); 
     }, 2000); 
+}
+
+// game screen
+async function startGame(clicked) {
+    ctx.fillStyle = "#000000"; 
+    ctx.fillRect(0, 0, width, height); 
+    clicked.game = setInterval(() => {
+        ctx.fillStyle = "#000000"; 
+        ctx.fillRect(0, 0, width, height); 
+        ctx.fillStyle = "#ffffff"; 
+        ctx.font = "30px Arial"; 
+        if (dir == 0) {
+            ctx.fillText("right", width/2, height/2); 
+        } else if (dir == 1) {
+            ctx.fillText("down", width/2, height/2); 
+        } else if (dir == 2) {
+            ctx.fillText("left", width/2, height/2); 
+        } else {
+            ctx.fillText("up", width/2, height/2); 
+        }
+    }, 500); 
+}
+
+// lose/win screen
+async function gameEnd(won) {
+    endScreen = true; 
+    if (won) {
+        // win screen
+    } else {
+        // lose screen
+    } 
+}
+
+// stuff to change based on keypress
+function keyPress(e) {
+    if (startScreen) {
+        clearInterval(clicked.startAdd); 
+        clearInterval(clicked.startClear); 
+        startGame(clicked); 
+        startScreen = false; 
+    } else if (endScreen) {
+        // stuff
+    } else {
+        if (e.code == "ArrowRight" || e.code == "KeyD") {
+            dir = Dirs.RIGHT; 
+        } else if (e.code == "ArrowDown" || e.code == "KeyS") {
+            dir = Dirs.DOWN; 
+        } else if (e.code == "ArrowLeft" || e.code == "KeyA") {
+            dir = Dirs.LEFT; 
+        } else if (e.code == "ArrowUp"  || e.code == "KeyW") {
+            dir = Dirs.UP; 
+        }
+    }
 }
 
 // 15 rows, 17 cols
 // width = 190, height = 180
 const canvas = document.getElementById("snakeCanvas");
 const ctx = canvas.getContext("2d"); 
+canvas.tabIndex = 0; // make it focusable so that event listners work
 
 let rows = 15; 
 let cols = 17; 
@@ -42,12 +96,29 @@ canvas.width = width;
 canvas.height = height; 
 
 // make the whole canvas black
-ctx.fillStyle = "rgb(0, 0, 0)"; 
+ctx.fillStyle = "#000000"; 
 ctx.fillRect(0, 0, width, height); 
 
+// set up variables
+let startScreen = true; 
+let endScreen = false; 
+
 // start screen
-let clicked = {clear: null, add: null}; 
+let clicked = {startClear: null, startAdd: null}; 
 start(clicked); 
+
+// event listeners
+canvas.addEventListener("keydown", keyPress); 
+canvas.focus(); 
+
+
+const Dirs = Object.freeze({
+    RIGHT:  0, 
+    DOWN:   1, 
+    LEFT:   2, 
+    UP:     3, 
+}); 
+let dir = Dirs.RIGHT; 
 
 
 /*
